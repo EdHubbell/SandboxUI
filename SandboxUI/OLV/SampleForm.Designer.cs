@@ -44,6 +44,7 @@ namespace OLV
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.btnApply = new System.Windows.Forms.Button();
             this.lblActiveParameter = new System.Windows.Forms.Label();
+            this.ucOLVPropertyGrid1 = new OLV.ucOLVPropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
             this.tableLayoutPanelGrid.SuspendLayout();
@@ -71,7 +72,7 @@ namespace OLV
             this.objectListView.SelectedBackColor = System.Drawing.Color.LightSteelBlue;
             this.objectListView.ShowGroups = false;
             this.objectListView.ShowImagesOnSubItems = true;
-            this.objectListView.Size = new System.Drawing.Size(326, 357);
+            this.objectListView.Size = new System.Drawing.Size(415, 357);
             this.objectListView.SmallImageList = this.imageListSmall;
             this.objectListView.TabIndex = 0;
             this.objectListView.UnfocusedSelectedBackColor = System.Drawing.Color.LightSteelBlue;
@@ -122,12 +123,11 @@ namespace OLV
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel.Controls.Add(this.objectListView, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.tableLayoutPanelGrid, 1, 0);
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(332, 363);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(421, 363);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // tableLayoutPanelGrid
@@ -138,7 +138,7 @@ namespace OLV
             this.tableLayoutPanelGrid.Controls.Add(this.btnApply, 0, 2);
             this.tableLayoutPanelGrid.Controls.Add(this.lblActiveParameter, 0, 0);
             this.tableLayoutPanelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelGrid.Location = new System.Drawing.Point(335, 3);
+            this.tableLayoutPanelGrid.Location = new System.Drawing.Point(424, 3);
             this.tableLayoutPanelGrid.Name = "tableLayoutPanelGrid";
             this.tableLayoutPanelGrid.RowCount = 3;
             this.tableLayoutPanelGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -186,11 +186,19 @@ namespace OLV
             this.lblActiveParameter.Text = "label1";
             this.lblActiveParameter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ucOLVPropertyGrid1
+            // 
+            this.ucOLVPropertyGrid1.Location = new System.Drawing.Point(567, 12);
+            this.ucOLVPropertyGrid1.Name = "ucOLVPropertyGrid1";
+            this.ucOLVPropertyGrid1.Size = new System.Drawing.Size(321, 322);
+            this.ucOLVPropertyGrid1.TabIndex = 2;
+            // 
             // SampleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 363);
+            this.ClientSize = new System.Drawing.Size(1036, 363);
+            this.Controls.Add(this.ucOLVPropertyGrid1);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SampleForm";
@@ -218,5 +226,6 @@ namespace OLV
         private TableLayoutPanel tableLayoutPanelGrid;
         private Button btnApply;
         private Label lblActiveParameter;
+        private ucOLVPropertyGrid ucOLVPropertyGrid1;
     }
 }
