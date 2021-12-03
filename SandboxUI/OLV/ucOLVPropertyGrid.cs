@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,7 +27,7 @@ namespace OLV
 
             InitializeModel();
             InitializeObjectListView();
-            pgRight.BrowsableAttributes = new AttributeCollection(new CategoryAttribute("User Parameters"));
+            propertyGrid.BrowsableAttributes = new AttributeCollection(new CategoryAttribute("User Parameters"));
         }
 
 
@@ -53,15 +50,15 @@ namespace OLV
         public void InitializeObjectListView()
         {
             olvColumnParameter.AspectToStringConverter = delegate (object x) { return ""; };
-            olvLeft.SetObjects(Parameters);
-            SwapPanes(true);
+            objectListView.SetObjects(Parameters);
+            SlidePanes(true);
         }
 
 
 
 
 
-        private void olvLeft_FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
+        private void objectListView_FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
@@ -79,7 +76,7 @@ namespace OLV
         }
 
 
-        private void olvLeft_SelectionChanged(object sender, EventArgs e)
+        private async void objectListView_SelectionChanged(object sender, EventArgs e)
         {
             if (PreventSwap)
             {
@@ -87,44 +84,79 @@ namespace OLV
                 return;
             }
             //            lblActiveParameter.Text = ((Parameter)olvLeft.SelectedObject).ParameterName;
-            pgRight.SelectedObject = olvLeft.SelectedObject;
-            SelectedIndex = olvLeft.SelectedIndex;
-            SwapPanes(false);
+            propertyGrid.SelectedObject = objectListView.SelectedObject;
+            SelectedIndex = objectListView.SelectedIndex;
+            SlidePanes(false);
 
         }
 
-        private void pgRight_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        private void propertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
-            olvLeft.SetObjects(Parameters);
-            olvLeft.SelectedIndex = SelectedIndex;
+            objectListView.SetObjects(Parameters);
+            objectListView.SelectedIndex = SelectedIndex;
             btnApply.BackColor = btnApply.FlatAppearance.MouseOverBackColor;
         }
 
         private async void btnApply_Click(object sender, EventArgs e)
         {
-            SwapPanes(true);
+            SlidePanes(true);
             PreventSwap = true;
-            olvLeft.DeselectAll();
+            objectListView.DeselectAll();
         }
 
-        private async Task SwapPanes(bool showOLV)
+        private async Task SlidePanes(bool showOLV)
         {
-            int indexToShow = showOLV ? 0 : 1;
-            int indexToHide = showOLV ? 1 : 0;
+            this.Cursor = Cursors.WaitCursor;
 
-            while (tlpMain.ColumnStyles[indexToHide].Width > 0)
+            // Set the width of the main table layout panel to be 2x the width of the control. 
+            // This allows us to move that tlp in the background.
+            // There's an assumption here that each column is 50% of the total width of the
+            // tlpMain object. So by making the tlpMain object 2x as wide as the control, the 
+            // tlpMain is exactly the right size to show one or the other of its columns.
+            if (tlpMain.Width != this.Width * 2) tlpMain.Width = this.Width * 2;
+
+            // To see column 0, set Location.X to 0. To see column 1, set Location.X to a negative value equal to the width of column 0.
+            int targetX = showOLV ? 0 : this.Width * -1;
+
+            try
             {
-                tlpMain.SuspendLayout();
-                tlpMain.ColumnStyles[indexToHide].Width -= 25;
-                tlpMain.ColumnStyles[indexToShow].Width += 25;
-                tlpMain.ResumeLayout();
+
+                // Determines the increment by which X will be changed. Width/10 means the tlpMain position 
+                // will be changed 10x as we slide. 
+                int increment = (showOLV ? this.Width / 10 : -1 * this.Width / 10);
+
+                // Slide tlpMain to the left or right. 
+                if (tlpMain.Location.X > targetX)
+                {
+                    while (tlpMain.Location.X > targetX)
+                    {
+                        await Task.Delay(1);
+                        tlpMain.Location = new Point(tlpMain.Location.X + increment, 0);
+                    }
+                }
+                else
+                {
+                    while (tlpMain.Location.X < targetX)
+                    {
+                        await Task.Delay(1);
+                        tlpMain.Location = new Point(tlpMain.Location.X + increment, 0);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // do nothing. 
             }
 
-            tlpMain.SuspendLayout();
-            tlpMain.ColumnStyles[indexToHide].Width = 0;
-            tlpMain.ColumnStyles[indexToShow].Width = 100;
-            tlpMain.ResumeLayout();
+
+            // Set the final position of tlpMain.
+            tlpMain.Location = new Point(targetX, 0);
+
+            this.Cursor = Cursors.Default;
+
         }
+
 
     }
 }
