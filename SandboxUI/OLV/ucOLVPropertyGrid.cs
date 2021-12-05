@@ -24,10 +24,16 @@ namespace OLV
             // Note that Load happens from within Visual Studio, in design time. For example, if you throw this control on a form, it'll render on the form in Design View after this code is called. 
             // On the one hand, this can be pretty dangerous. Throw an exception in the Load event on a user control, and your whole Designer experience is f'd. 
             // On the other, it can be quite nice to see a rendered user control where it'll be, and have a different designer experience when editing that same user control.
-
+            //this.Dock = DockStyle.Fill;
+            //tlpMain.Dock = DockStyle.Fill;
             InitializeModel();
             InitializeObjectListView();
             propertyGrid.BrowsableAttributes = new AttributeCollection(new CategoryAttribute("User Parameters"));
+
+            this.DoubleBuffered = true;
+
+            if (tlpMain.Width != this.Width * 2) tlpMain.Width = this.Width * 2;
+
         }
 
 
@@ -51,6 +57,8 @@ namespace OLV
         {
             olvColumnParameter.AspectToStringConverter = delegate (object x) { return ""; };
             objectListView.SetObjects(Parameters);
+            objectListView.SmallImageList = imageListSmall;
+
             SlidePanes(true);
         }
 
@@ -83,7 +91,11 @@ namespace OLV
                 PreventSwap = false;
                 return;
             }
-            //            lblActiveParameter.Text = ((Parameter)olvLeft.SelectedObject).ParameterName;
+
+            lblActiveParameter.Text = ((Parameter)objectListView.SelectedObject).ParameterName;
+            lblActiveParameterDesc.Text = ((Parameter)objectListView.SelectedObject).Description;
+
+
             propertyGrid.SelectedObject = objectListView.SelectedObject;
             SelectedIndex = objectListView.SelectedIndex;
             SlidePanes(false);
@@ -120,7 +132,6 @@ namespace OLV
 
             try
             {
-
                 // Determines the increment by which X will be changed. Width/10 means the tlpMain position 
                 // will be changed 10x as we slide. 
                 int increment = (showOLV ? this.Width / 10 : -1 * this.Width / 10);
@@ -146,17 +157,20 @@ namespace OLV
             }
             catch (Exception ex)
             {
-                // do nothing. 
+                // Do nothing. Animation math errors aren't something we want to crash the app for. 
             }
-
 
             // Set the final position of tlpMain.
             tlpMain.Location = new Point(targetX, 0);
 
             this.Cursor = Cursors.Default;
-
         }
 
+        private void ucOLVPropertyGrid_Resize(object sender, EventArgs e)
+        {
+            if (tlpMain.Width != this.Width * 2) tlpMain.Width = this.Width * 2;
+            if (tlpMain.Height != this.Height) tlpMain.Height = this.Height;
 
+        }
     }
 }

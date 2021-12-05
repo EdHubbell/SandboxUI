@@ -45,9 +45,11 @@ namespace OLV
             this.btnApply = new System.Windows.Forms.Button();
             this.lblActiveParameter = new System.Windows.Forms.Label();
             this.ucOLVPropertyGrid1 = new OLV.ucOLVPropertyGrid();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
             this.tableLayoutPanelGrid.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // objectListView
@@ -72,7 +74,7 @@ namespace OLV
             this.objectListView.SelectedBackColor = System.Drawing.Color.LightSteelBlue;
             this.objectListView.ShowGroups = false;
             this.objectListView.ShowImagesOnSubItems = true;
-            this.objectListView.Size = new System.Drawing.Size(415, 357);
+            this.objectListView.Size = new System.Drawing.Size(418, 357);
             this.objectListView.SmallImageList = this.imageListSmall;
             this.objectListView.TabIndex = 0;
             this.objectListView.UnfocusedSelectedBackColor = System.Drawing.Color.LightSteelBlue;
@@ -123,11 +125,11 @@ namespace OLV
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel.Controls.Add(this.objectListView, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.tableLayoutPanelGrid, 1, 0);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(421, 363);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(424, 363);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // tableLayoutPanelGrid
@@ -138,7 +140,7 @@ namespace OLV
             this.tableLayoutPanelGrid.Controls.Add(this.btnApply, 0, 2);
             this.tableLayoutPanelGrid.Controls.Add(this.lblActiveParameter, 0, 0);
             this.tableLayoutPanelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelGrid.Location = new System.Drawing.Point(424, 3);
+            this.tableLayoutPanelGrid.Location = new System.Drawing.Point(427, 3);
             this.tableLayoutPanelGrid.Name = "tableLayoutPanelGrid";
             this.tableLayoutPanelGrid.RowCount = 3;
             this.tableLayoutPanelGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -188,19 +190,35 @@ namespace OLV
             // 
             // ucOLVPropertyGrid1
             // 
-            this.ucOLVPropertyGrid1.Location = new System.Drawing.Point(567, 12);
+            this.ucOLVPropertyGrid1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ucOLVPropertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOLVPropertyGrid1.Location = new System.Drawing.Point(521, 3);
             this.ucOLVPropertyGrid1.Name = "ucOLVPropertyGrid1";
-            this.ucOLVPropertyGrid1.Size = new System.Drawing.Size(321, 322);
+            this.ucOLVPropertyGrid1.Size = new System.Drawing.Size(512, 526);
             this.ucOLVPropertyGrid1.TabIndex = 2;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ucOLVPropertyGrid1, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1036, 532);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // SampleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1036, 363);
-            this.Controls.Add(this.ucOLVPropertyGrid1);
-            this.Controls.Add(this.tableLayoutPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.ClientSize = new System.Drawing.Size(1036, 532);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SampleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sample Form";
@@ -209,6 +227,7 @@ namespace OLV
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanelGrid.ResumeLayout(false);
             this.tableLayoutPanelGrid.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -227,5 +246,6 @@ namespace OLV
         private Button btnApply;
         private Label lblActiveParameter;
         private ucOLVPropertyGrid ucOLVPropertyGrid1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
