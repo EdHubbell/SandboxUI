@@ -30,9 +30,15 @@ namespace OLV
             InitializeObjectListView();
             propertyGrid.BrowsableAttributes = new AttributeCollection(new CategoryAttribute("User Parameters"));
 
+            // This (maybe) helps with the slide animation.
             this.DoubleBuffered = true;
 
+            // It is nice in design time to see both sides of the usercontrol so as to ease editing. However, the true nature of the tlpMain in this case is to 
+            // act as a container that is 2x as wide as the user control. That container is moved back and forth inside the user control to create the slide effect. 
+            tlpMain.Dock = DockStyle.None;
+
             if (tlpMain.Width != this.Width * 2) tlpMain.Width = this.Width * 2;
+            if (tlpMain.Height != this.Height) tlpMain.Height = this.Height;
 
         }
 
@@ -170,7 +176,6 @@ namespace OLV
         {
             if (tlpMain.Width != this.Width * 2) tlpMain.Width = this.Width * 2;
             if (tlpMain.Height != this.Height) tlpMain.Height = this.Height;
-
         }
     }
 }

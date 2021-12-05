@@ -57,11 +57,12 @@ namespace OLV
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpMain.Controls.Add(this.tlpLeft, 0, 0);
             this.tlpMain.Controls.Add(this.tlpRight, 1, 0);
+            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 1;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpMain.Size = new System.Drawing.Size(321, 322);
+            this.tlpMain.Size = new System.Drawing.Size(423, 322);
             this.tlpMain.TabIndex = 0;
             // 
             // tlpLeft
@@ -74,7 +75,7 @@ namespace OLV
             this.tlpLeft.Name = "tlpLeft";
             this.tlpLeft.RowCount = 1;
             this.tlpLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpLeft.Size = new System.Drawing.Size(154, 316);
+            this.tlpLeft.Size = new System.Drawing.Size(205, 316);
             this.tlpLeft.TabIndex = 3;
             // 
             // objectListView
@@ -99,7 +100,7 @@ namespace OLV
             this.objectListView.SelectedBackColor = System.Drawing.Color.LightSteelBlue;
             this.objectListView.ShowGroups = false;
             this.objectListView.ShowImagesOnSubItems = true;
-            this.objectListView.Size = new System.Drawing.Size(148, 310);
+            this.objectListView.Size = new System.Drawing.Size(199, 310);
             this.objectListView.TabIndex = 1;
             this.objectListView.UnfocusedSelectedBackColor = System.Drawing.Color.LightSteelBlue;
             this.objectListView.UseCellFormatEvents = true;
@@ -134,7 +135,7 @@ namespace OLV
             this.tlpRight.Controls.Add(this.btnApply, 0, 3);
             this.tlpRight.Controls.Add(this.lblActiveParameter, 0, 0);
             this.tlpRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpRight.Location = new System.Drawing.Point(163, 3);
+            this.tlpRight.Location = new System.Drawing.Point(214, 3);
             this.tlpRight.Name = "tlpRight";
             this.tlpRight.RowCount = 4;
             this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -142,7 +143,7 @@ namespace OLV
             this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpRight.Size = new System.Drawing.Size(155, 316);
+            this.tlpRight.Size = new System.Drawing.Size(206, 316);
             this.tlpRight.TabIndex = 2;
             // 
             // lblActiveParameterDesc
@@ -153,7 +154,7 @@ namespace OLV
             this.lblActiveParameterDesc.Location = new System.Drawing.Point(3, 30);
             this.lblActiveParameterDesc.Name = "lblActiveParameterDesc";
             this.lblActiveParameterDesc.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.lblActiveParameterDesc.Size = new System.Drawing.Size(149, 20);
+            this.lblActiveParameterDesc.Size = new System.Drawing.Size(200, 20);
             this.lblActiveParameterDesc.TabIndex = 3;
             this.lblActiveParameterDesc.Text = "ActiveParameterDesc";
             // 
@@ -162,7 +163,7 @@ namespace OLV
             this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid.Location = new System.Drawing.Point(3, 53);
             this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.Size = new System.Drawing.Size(149, 220);
+            this.propertyGrid.Size = new System.Drawing.Size(200, 220);
             this.propertyGrid.TabIndex = 0;
             this.propertyGrid.ToolbarVisible = false;
             this.propertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid_PropertyValueChanged);
@@ -175,7 +176,7 @@ namespace OLV
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Location = new System.Drawing.Point(3, 279);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(149, 34);
+            this.btnApply.Size = new System.Drawing.Size(200, 34);
             this.btnApply.TabIndex = 1;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -188,7 +189,7 @@ namespace OLV
             this.lblActiveParameter.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActiveParameter.Location = new System.Drawing.Point(3, 0);
             this.lblActiveParameter.Name = "lblActiveParameter";
-            this.lblActiveParameter.Size = new System.Drawing.Size(149, 30);
+            this.lblActiveParameter.Size = new System.Drawing.Size(200, 30);
             this.lblActiveParameter.TabIndex = 2;
             this.lblActiveParameter.Text = "ActiveParameter";
             this.lblActiveParameter.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -216,7 +217,7 @@ namespace OLV
             this.Controls.Add(this.tlpMain);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucOLVPropertyGrid";
-            this.Size = new System.Drawing.Size(321, 322);
+            this.Size = new System.Drawing.Size(423, 322);
             this.Load += new System.EventHandler(this.ucOLVPropertyGrid_Load);
             this.Resize += new System.EventHandler(this.ucOLVPropertyGrid_Resize);
             this.tlpMain.ResumeLayout(false);
